@@ -15,6 +15,8 @@ public class StackTest {
 
     @Test
     public void newStack_isEmpty() {
+
+        MyStack stack = new MyStack();
         assertTrue(stack.isEmpty());
     }
 
@@ -101,6 +103,15 @@ public class StackTest {
         stack.push("Tony stark");
         stack.push("peter parker");
         assertEquals(2, stack.search("Uncle Bob"));
+    }
+
+    @Test
+    public void push5StringsSearchForElementNotInStack_returnNegative1() {
+        stack.push("Wizard of oz");
+        stack.push("Uncle Bob");
+        stack.push("Tony stark");
+        stack.push("peter parker");
+        assertEquals(-1, stack.search("Praise"));
     }
 
 
