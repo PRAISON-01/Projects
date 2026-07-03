@@ -12,10 +12,10 @@ public class AccountTest{
     @BeforeEach
     public void setUp() {
         myAccount = new Account();
+        myAccount.setPin(1234);
     }
     @Test
     public void deposit200_balanceIs200Test() {
-//        Account myAccount = new Account();
         assertEquals(0,myAccount.getBalance());
 
         myAccount.deposit(200);
@@ -50,6 +50,7 @@ public class AccountTest{
         myAccount.deposit(5000);
         assertEquals(5000, myAccount.getBalance());
 
+        myAccount.enterPin(1234);
         myAccount.withdraw(500);
         assertEquals(4500, myAccount.getBalance());
     }
@@ -72,6 +73,14 @@ public class AccountTest{
         assertEquals(500, myAccount.getBalance());
     }
 
+    @Test
+    public void AccountDeposited_withdrawWithoutPin_throwError() {
+        myAccount.deposit(500);
+        assertEquals(500, myAccount.getBalance());
+
+        myAccount.withdraw(200);
+        assertEquals(500, myAccount.getBalance());
+    }
 
 
 }
