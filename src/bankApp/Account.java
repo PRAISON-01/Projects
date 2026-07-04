@@ -2,11 +2,21 @@ package bankApp;
 
 public class Account {
 
+    private String accountNumber;
     private int balance = 0;
     private int pin;
     private boolean isAuthenticated;
 
+    public Account(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public Account() {
+
+    }
+
     public int getBalance() {
+        if(!isAuthenticated) throw new IllegalArgumentException(("Enter pin!!!"));
         return balance;
     }
 
@@ -16,7 +26,7 @@ public class Account {
 
     public void withdraw(int amount) {
         if (isAuthenticated) {
-            if (amount > 0 && amount < balance) balance = balance - amount;
+            if (amount > 0 && amount <= balance) balance = balance - amount;
         }
     }
 
@@ -35,6 +45,10 @@ public class Account {
             this.isAuthenticated = true;
         }
 
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
 //    private int pinLength() {
