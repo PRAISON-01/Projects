@@ -1,6 +1,7 @@
 package bankApp;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -71,6 +72,28 @@ public class BankTest {
         String accountNumber = praiseAccount.getAccountNumber();
         assertThrows(IllegalArgumentException.class, ()-> bank.transfer(1000, accountNumber, accountNumber, 1234));
     }
+
+    @Test
+//    @DisplayName
+    public void registerAccount_Deposit2k_Withdraw2k_throwsException() {
+        Account praiseAccount = bank.registerCustomer("Praise", "Nwankwo", 1234);
+        String accountNumber = praiseAccount.getAccountNumber();
+        bank.deposit(accountNumber, 2000);
+        assertThrows(IllegalArgumentException.class, ()-> bank.withdraw(accountNumber, 2000 , 1234));
+
+    }
+
+    @Test
+    public void registerAccount_Deposit2k_withDraw500_balanceIs1500() {
+        Account praiseAccount = bank.registerCustomer("Praise", "Nwankwo", 1234);
+        String accountNumber = praiseAccount.getAccountNumber();
+        bank.deposit(accountNumber, 2000);
+        bank.withdraw(accountNumber, 500, 1234);
+        assertEquals(1500, bank.checkBalance(1234, accountNumber));
+    }
+
+
+
 
 
 }

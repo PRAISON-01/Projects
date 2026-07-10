@@ -16,7 +16,7 @@ public class Bank {
     }
 
     public Account registerCustomer(String firstName, String lastName , int pin) {
-        String generatedAccountNumber = " " + (int)(Math.random() * 10000000) + 999999999;
+        String generatedAccountNumber = "" + (int)(Math.random() * 10000) +9;
 
 
         this.name = firstName + " " + lastName;
@@ -46,6 +46,9 @@ public class Bank {
 
     public void deposit(String accountNumber, int amount) {
         Account account = findAccountNumber(accountNumber);
+        if (account == null) {
+            throw new IllegalArgumentException("Account number " + accountNumber + " not found!");
+        }
         account.deposit(amount);
     }
 
@@ -72,4 +75,18 @@ public class Bank {
         senderAccount.withdraw(amount);
         receiverAccount.deposit(amount);
     }
+
+
+
+    public void withdraw(String accountNumber, int amount, int pin) {
+        if(amount >= this.checkBalance(pin, accountNumber)) throw new IllegalArgumentException("Insufficient Balance!!!");
+        if(amount < 1) throw new IllegalArgumentException("Amount must be greater than 1!!!");
+        Account account = findAccountNumber(accountNumber);
+        if (account == null) {
+            throw new IllegalArgumentException("Account number " + accountNumber + " not found!");
+        }
+        account.withdraw(amount);
+    }
+
+
 }

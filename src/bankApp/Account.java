@@ -28,6 +28,8 @@ public class Account {
         if (isAuthenticated) {
             if (amount > 0 && amount <= balance) balance = balance - amount;
         }
+
+        isAuthenticated = false;
     }
 
     public void setPin(int pin) {
