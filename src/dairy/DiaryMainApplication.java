@@ -1,4 +1,4 @@
-package Dairy;
+package dairy;
 import java.util.Scanner;
 
 public class DiaryMainApplication {

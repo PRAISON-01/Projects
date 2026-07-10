@@ -1,4 +1,4 @@
-package Dairy;
+package dairy;
 
 public class Entry {
     private int ID;

@@ -1,4 +1,4 @@
-package Dairy;
+package dairy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
