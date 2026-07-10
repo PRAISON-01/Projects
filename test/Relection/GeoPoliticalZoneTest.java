@@ -1,7 +1,6 @@
 package Relection;
-
-import Reflection.GeoPoliticalZone;
-import Reflection.State;
+import Reflection.GeoPoliticalZone.GeoPoliticalZone;
+import Reflection.GeoPoliticalZone.State;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
