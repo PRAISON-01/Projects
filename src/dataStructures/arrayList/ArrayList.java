@@ -1,4 +1,4 @@
-package arrayList;
+package dataStructures.arrayList;
 
 public class ArrayList {
     private String[] stringArray = new String[10];

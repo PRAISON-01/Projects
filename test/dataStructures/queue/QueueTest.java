@@ -1,5 +1,6 @@
-package queue;
+package dataStructures.queue;
 
+import dataStructures.queue.Queue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,7 @@
-package set;
+package dataStructures.set;
 
 
+import dataStructures.set.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

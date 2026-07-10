@@ -1,5 +1,6 @@
-package arrayList;
+package dataStructures.arrayList;
 
+import dataStructures.arrayList.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

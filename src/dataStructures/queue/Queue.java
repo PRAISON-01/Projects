@@ -1,4 +1,4 @@
-package queue;
+package dataStructures.queue;
 
 public class Queue {
 //    private boolean isEmpty = true;

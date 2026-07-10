@@ -1,4 +1,4 @@
-package set;
+package dataStructures.set;
 
 public class Set {
     private boolean isEmpty = true;

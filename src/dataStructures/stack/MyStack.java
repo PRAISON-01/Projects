@@ -1,4 +1,4 @@
-package stack;
+package dataStructures.stack;
 
 public class MyStack {
 //    private boolean isEmpty = true;
