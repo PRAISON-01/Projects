@@ -2,34 +2,61 @@ package bankApp;
 
 import java.util.ArrayList;
 
+
 public class Bank {
     private String name;
-    private String number;
+    private String bankName;
     private int pin;
     private int count;
+    private String bankCode;
+    private final int[] weights = {3, 7, 3, 3, 7, 3, 3, 7, 3, 3, 7, 3};
 
 
     private final ArrayList<Account> accounts = new ArrayList<>();
 
 
-    public Bank(String bankName) {
+    public Bank(String bankName, String bankCode) {
+        this.bankName = bankName;
+        this.bankCode = bankCode;
     }
 
     public Account registerCustomer(String firstName, String lastName , int pin) {
-        String generatedAccountNumber = "" + (int)(Math.random() * 10000) +9;
+        String accountNumber = generateAccountNumber();
 
-
-        this.name = firstName + " " + lastName;
-        this.pin = pin;
-
-        Account newAccount = new Account(generatedAccountNumber);
+        Account newAccount = new Account(accountNumber);
         newAccount.setPin(pin);
-
 
         this.accounts.add(newAccount);
         count = count + 1;
+
+        this.name = firstName + " " + lastName;
+        this.pin = pin;
         return newAccount;
     }
+
+//    Create a unique 9 digit number
+//    Add the bankcode to the serial number
+//    Multiply the weights by the combined numbers
+//    Sum up the result
+//    Sum % 10
+//    remainder - 10
+//    add value to the serial number
+
+    private String generateAccountNumber() {
+        String serialNumber = String.format("%09d", count + 1);
+        String checkSum = this.bankCode + serialNumber;
+        int sum = 0;
+        for(int count = 0; count < weights.length; count++) {
+            int digit = Character.getNumericValue(checkSum.charAt(count));
+            sum += digit * weights[count];
+        }
+
+        int check_digit = (sum % 10) - 10;
+        return serialNumber + 1;
+    }
+
+
+
 
     public int getNumberOfRegisteredAccount() {
         return count;
@@ -87,6 +114,8 @@ public class Bank {
         }
         account.withdraw(amount);
     }
+
+
 
 
 }

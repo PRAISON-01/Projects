@@ -12,4 +12,5 @@ public enum Day {
     public int getDayNumber() {
         return dayNumber;
     }
+
 }

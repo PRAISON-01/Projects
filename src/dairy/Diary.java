@@ -13,6 +13,7 @@ public class Diary {
         this.username = username;
         this.password = password;
     }
+
     public boolean isLocked() {
         return isLocked;
     }
@@ -27,6 +28,7 @@ public class Diary {
 
     public void createEntry(String title, String body) {
         if(isLocked == true) throw new IllegalArgumentException("Unlock Dairy Before Creating Entry!!!");
+        if(title == null || body == null) throw new IllegalArgumentException("This cannot be empty");
         int ID = generateID();
         Entry entry = new Entry(ID, title, body);
         entries.add(entry);
@@ -62,6 +64,8 @@ public class Diary {
     public void updateDiary(int ID, String title, String body) {
 //        Entry newEntry;
         if(isLocked == true) throw new IllegalArgumentException("Unlock Dairy Before Creating Entry!!!");
+        if(title == null || body == null) throw new IllegalArgumentException("This cannot be empty");
+
         for(Entry entry : entries) {
             if(entry.getID() == ID) {
                 entry.setBody(body);
@@ -78,5 +82,8 @@ public class Diary {
         return password;
     }
 
-    //    public void
+    public ArrayList<Entry> getEntries() {
+        return entries;
+    }
+//    public void
 }

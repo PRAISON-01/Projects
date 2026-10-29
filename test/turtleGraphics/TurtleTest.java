@@ -142,7 +142,7 @@ public class TurtleTest {
 
         turtle.moveForward(5);
         assertEquals(0,position.getRowPosition());
-        assertEquals(5,position.getColumnPosition());
+        assertEquals(4,position.getColumnPosition());
     }
 
 
@@ -160,8 +160,8 @@ public class TurtleTest {
         assertEquals(Direction.SOUTH, turtle.getCurrentDirection());
 
         turtle.moveForward(5);
-        assertEquals(5,position.getRowPosition());
-        assertEquals(5,position.getColumnPosition());
+        assertEquals(4,position.getRowPosition());
+        assertEquals(4,position.getColumnPosition());
     }
 
     @Test
@@ -171,7 +171,35 @@ public class TurtleTest {
         assertEquals(1, sketchPad.getFloor()[0][0]);
         assertEquals(1, sketchPad.getFloor()[0][1]);
         assertEquals(1, sketchPad.getFloor()[0][2]);
-        assertEquals(1, sketchPad.getFloor()[0][3]);
+
+        turtle.turnRight();
+        assertEquals(Direction.SOUTH, turtle.getCurrentDirection());
+        turtle.moveForward(3);
+        assertEquals(1, sketchPad.getFloor()[0][2]);
+        assertEquals(1, sketchPad.getFloor()[1][2]);
+        assertEquals(1, sketchPad.getFloor()[2][2]);
+
+        turtle.turnRight();
+        assertEquals(Direction.WEST, turtle.getCurrentDirection());
+        turtle.moveForward(3);
+        assertEquals(1, sketchPad.getFloor()[2][2]);
+        assertEquals(1, sketchPad.getFloor()[2][1]);
+        assertEquals(1, sketchPad.getFloor()[2][0]);
+
+
+        turtle.turnRight();
+        assertEquals(Direction.NORTH, turtle.getCurrentDirection());
+        turtle .moveForward(3);
+        assertEquals(1, sketchPad.getFloor()[2][0]);
+        assertEquals(1, sketchPad.getFloor()[1][0]);
+        assertEquals(1, sketchPad.getFloor()[0][0]);
+
+    }
+
+    @Test
+    public void movePenDown_moveForward21Steps_ThrowException_StepsIs20() {
+        turtle.movePenDown();
+        assertThrows(IllegalArgumentException.class, ()-> turtle.moveForward(20));
     }
 
 

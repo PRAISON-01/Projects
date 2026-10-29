@@ -11,7 +11,7 @@ public class BankTest {
 
     @BeforeEach
     public void setUp() {
-         bank = new Bank("Monie Point");
+         bank = new Bank("Monie Point", "999");
     }
     @Test
     public void registerAccount_returnsNewAccount() {
@@ -87,6 +87,11 @@ public class BankTest {
     public void registerAccount_Deposit2k_withDraw500_balanceIs1500() {
         Account praiseAccount = bank.registerCustomer("Praise", "Nwankwo", 1234);
         String accountNumber = praiseAccount.getAccountNumber();
+        System.out.println(accountNumber);
+
+        Account emma = bank.registerCustomer("Praise", "Nwankwo", 1234);
+        String acct = emma.getAccountNumber();
+        System.out.println(acct);
         bank.deposit(accountNumber, 2000);
         bank.withdraw(accountNumber, 500, 1234);
         assertEquals(1500, bank.checkBalance(1234, accountNumber));

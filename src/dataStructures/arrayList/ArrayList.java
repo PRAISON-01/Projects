@@ -82,6 +82,18 @@ public class ArrayList {
         stringArray[--size] = null;
         return element;
     }
+    public String remove(String element) {
+
+        return element;
+    }
+
+
+    public boolean contains(String element) {
+        for(String item : stringArray) {
+            if(item == element) return true;
+        }
+        return false;
+    }
 
 
 }

@@ -7,6 +7,8 @@ public class Diaries {
 
 
      public void add(String username, String password) {
+          if(username == null || password == null) throw new IllegalArgumentException("This cannot be empty");
+
           for(Diary diary : diaries) {
                if(diary.getUsername().equals(username)) {
                     throw new IllegalArgumentException("Username already available");

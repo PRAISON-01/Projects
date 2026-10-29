@@ -61,11 +61,15 @@ public class Turtle {
     }
 
     public void moveForward(int steps) {
-        for(int count = 0; count < steps; count++){
+        if(steps >= 20) throw new IllegalArgumentException("Out of bound!!!");
+        for(int count = 1; count < steps; count++){
+            if(penIsUp == false) {
+                sketchPad.markFloor( position.getRowPosition(), position.getColumnPosition());
+            }
             switch (currentDirection) {
                 case EAST->  position.increaseColumBy(1);
-                case WEST->  position.increaseColumBy(1);
-                case NORTH -> position.increaseRowBy(1);
+                case WEST->  position.increaseColumBy(-1);
+                case NORTH -> position.increaseRowBy(-1);
                 case SOUTH -> position.increaseRowBy(1);
             }
             if(penIsUp == false) {

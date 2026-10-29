@@ -44,7 +44,8 @@ public class DairyTest {
         myDiary.unlockDiary("password");
         myDiary.createEntry("My Semicolon Journey", "This is my journey at semicolon is going...");
         Entry foundEntry = myDiary.findDairyByID(ID);
-//        System.out.println(foundEntry);
+        assertEquals("My Semicolon Journey", foundEntry.getTitle());
+        assertEquals("This is my journey at semicolon is going...", foundEntry.getBody());
     }
 
     @Test

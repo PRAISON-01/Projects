@@ -1,7 +1,8 @@
 package bankApp;
 
-public class Account {
+import java.math.BigDecimal;
 
+public class Account {
     private String accountNumber;
     private int balance = 0;
     private int pin;
